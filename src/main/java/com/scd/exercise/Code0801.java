@@ -29,4 +29,9 @@ public class Code0801 {
             return records[n].mod(mod).intValue();
         }
     }
+
+    public static void main(String[] args) {
+        Code0801 code0801 = new Code0801();
+        code0801.waysToStep(100000);
+    }
 }

@@ -1,6 +1,7 @@
 package com.scd.exercise.m11;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,24 +13,25 @@ public class Code933 {
         private List<Integer> list;
 
         public RecentCounter() {
-            list = new ArrayList<>();
+            list = new LinkedList<>();
         }
 
         public int ping(int t) {
+            int size = list.size();
+            if (size > 3000) {
+                list.remove(0);
+            }
             list.add(t);
             int min = t - 3000;
             int minIndex = -1;
-            int size = list.size();
-            int startIndex = 0;
-            if (size > 3000) {
-                startIndex = size - 3000;
-            }
-            for (int i = startIndex; i < size; i++) {
+            size = list.size();
+            for (int i = 0; i < size; i++) {
                 if (list.get(i) >= min) {
                     minIndex = i;
                     break;
                 }
             }
+
             if (minIndex == -1) {
                 throw new IllegalArgumentException("input data error");
             }
